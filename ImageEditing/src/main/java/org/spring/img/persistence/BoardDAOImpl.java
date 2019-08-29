@@ -1,9 +1,13 @@
 package org.spring.img.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.spring.img.domain.BoardVO;
+import org.spring.img.domain.Criteria;
+import org.spring.img.domain.Paging;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -35,6 +39,18 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void delete(int bno) throws Exception {
 		session.delete(name + "delete",bno);
+	}
+
+	@Override
+	public List<BoardVO> list(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(name + "list",cri);
+	}
+
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(name + "listCount");
 	}
 
 }
