@@ -313,12 +313,12 @@ A:hover {text-decoration:none;}
     <span class="lines line-3"></span>
   </label>
 
-   <a href="#" class="menu-item blue">로그인</a>
+   <a href="/user/login" class="menu-item blue">로그인</a>
    <a href="/board/insertPage" class="menu-item green">등록</a>
-   <a href="/board/insertPage" class="menu-item red">그림판</a>
+   <a href="#" class="menu-item red">그림판</a>
    <a href="/board/listPage?page=1" class="menu-item purple">리스트</a>
    <a href="#" class="menu-item orange">개인정보</a>
-   <a href="#" class="menu-item lightblue">로그아웃</a>
+   <a href="/user/logout" class="menu-item lightblue">로그아웃</a>
 </nav>
 
 </body>
