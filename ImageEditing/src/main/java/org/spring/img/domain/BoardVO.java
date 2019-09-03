@@ -1,7 +1,7 @@
 package org.spring.img.domain;
 
 public class BoardVO {
-	 private int bno; 
+	private int bno; 
 	private String title;
 	private String content;
 	private String userid;

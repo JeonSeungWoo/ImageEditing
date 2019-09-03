@@ -43,9 +43,9 @@ public class UploadController {
 			in = new FileInputStream(noImg);
 		
 		}
-	
-		return IOUtils.toByteArray(in);
-		
+		byte[] result = IOUtils.toByteArray(in);
+		in.close();
+		return result;
 		
 	}
 	
@@ -65,10 +65,11 @@ public class UploadController {
 			in = new FileInputStream(location + fileName);
 		}else {
 			in = new FileInputStream(noImg);
-		
+			
 		}
-	
-		return IOUtils.toByteArray(in);
+		byte[] result = IOUtils.toByteArray(in);
+		in.close();
+		return result;
      
 	}
 

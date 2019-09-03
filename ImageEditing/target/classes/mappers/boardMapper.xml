@@ -27,34 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update tbl_board
 		set
 		title = #{title},
-		content = #{content}
+		content
+		= #{content}
 		where bno = #{bno}
 	</update>
 
 	<delete id="delete">
 		delete from tbl_board where bno = #{bno}
 	</delete>
-
-
-	<sql id="condition">
-		<if test="sType != null">
-			<if test="sType eq 'title'.toString()">
-				and title like '%#{keyword}%'
-
-			</if>
-			<if test="sType eq 'content'.toString()">
-				and content like '%#{keyword}%'
-			</if>
-			<if test="sType eq 'userid'.toString()">
-				and userid like '%#{keyword}%'
-			</if>
-			<if test="sType eq 'date'.toString()">
-				and insert_date like '%#{keyword}%'
-			</if>
-
-		</if>
-
-	</sql>
 
 	<select id="list" parameterType="Criteria" resultType="BoardVO">
 		select
@@ -65,7 +45,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert_date
 		from tbl_board
 		where bno > 0
-	<include refid="condition"></include>
+		<if test="sType != null">
+			<if test="sType eq 'title'.toString()">
+				and title like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'content'.toString()">
+				and content like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'userid'.toString()">
+				and userid like CONCAT('%', #{keyword},'%') 
+			</if>
+		</if>
 		order by bno desc
 		limit #{page},10
 	</select>
@@ -73,6 +63,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listCount" resultType="java.lang.Integer">
 		select count(1) from tbl_board
 		where bno > 0
+			<if test="sType != null">
+			<if test="sType eq 'title'.toString()">
+				and title like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'content'.toString()">
+				and content like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'userid'.toString()">
+				and userid like CONCAT('%', #{keyword},'%') 
+			</if>
+		</if>
 	</select>
 
 

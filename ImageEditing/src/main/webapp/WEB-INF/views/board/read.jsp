@@ -17,7 +17,7 @@ img{
 }
 </style>
 
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -85,7 +85,7 @@ $(document).ready(function(){
 	});
 	
 	$("#delBtn").on("click",function(){
-		obj.attr("action","delete").attr("method","post").submit();
+		obj.attr("action","delete").attr("method","POST").submit();
 	});
 	
 	$("#listBtn").on("click",function(){
