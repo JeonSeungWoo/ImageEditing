@@ -18,7 +18,6 @@ public class Paging {
 
 	private void calcPage() {
 		int tempEnd = (int)(Math.ceil(page/10.0)*10);
-		System.out.println("test : " + tempEnd);
 		
 		startPage = tempEnd -9;
 		
@@ -28,13 +27,11 @@ public class Paging {
 		
 		if(tempEnd *10 >= totalPage){
 			endPage = (int)(Math.ceil(totalPage/10.0));
-			System.out.println("test2 : " + endPage);
 			
 			next = false;
 			
 		}else{
 			endPage = tempEnd;
-			System.out.println("test3 : " + endPage);
 			next = true;
 		}
 	}

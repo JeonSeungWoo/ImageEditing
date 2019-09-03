@@ -4,13 +4,131 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+
+
+#img{
+   width: 100%;
+   height: 100%;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+  padding: 2rem;
+}
+.gallery{
+  width: 100%;
+  max-width: 960px;
+  min-height: 100vh;
+  margin: 2rem auto;
+  
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.gallery-item{
+  box-shadow: 2px 2px 8px -1px #3498DB;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  background: #000;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery-item-image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: lightblue;
+  z-index:20;
+  -webkit-transition:all .5s ease;
+  transition: all .5s ease;
+  bottom:0;
+  overflow: hidden;
+
+}
+
+.gallery-item:hover .gallery-item-image{
+  bottom: 80px;
+}
+
+.gallery-item-description{
+  color:white;
+  font-size: .8rem;
+  width: 100%;
+  height: 80px;
+  padding: .5rem .8rem;
+  background: #3498DB;
+  position: absolute;
+  bottom:0;
+}
+
+
+/*paging Img  */
+.pagingNum{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  padding:5px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.pagingNum:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.pagingNum:before,.pagingNum:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.pagingNum:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.pagingNum:hover:before,.pagingNum:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+
+</style>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 
 <body>
-
+<!--검색 STA  -->
 <div align="center">
 		<form action="listPage" method="get" id="form">
 			<input id="pageHidden" type="hidden" name="page" value="${param.page}"> 
@@ -25,42 +143,50 @@
 		</form>
 
 </div>
-       <table>
-         <c:forEach items="${list}" var="list">
-         <tr>
-         <td><a href="/board/read?bno=${list.bno}&page=${param.page}">${list.bno}</a></td>
-         <td>${list.title}</td>
-         <td>${list.content}</td>
-         <td>${list.userid}</td>
-         </tr>
-         </c:forEach>
+<!--검색 End  -->
 
 
+<div class="container">
 
-      </table>
-<div class="text-center">
-	<ul class="pagination">
+ <div class="gallery">
+ <c:forEach items="${list}" var="list">
+ 
+    <div class="gallery-item">
+      <div class="gallery-item-image">
+        <a href="/board/read?bno=${list.bno}">
+        <img id="img" alt="image" src="/upload/show?bno=${list.bno}">
+        </a>
+        </div>
+      <div class="gallery-item-description">
+        <h3>${list.title}</h3>
+        <span>${list.content}</span>
+        </div>
+    </div>
+ 
+  </c:forEach>
+</div>
+</div>
 
+      
+      
+      
+<p class="paging">
 		<c:if test="${Paging.prev}">
-			<a href="listPage?page=${(Paging.startPage - 1)}">이전</a>
+			<a  class="page_btn btn_prev" href="listPage?page=${(Paging.startPage - 1)}">이전</a>
 		</c:if>
 
 		<c:forEach begin="${Paging.startPage}" end="${Paging.endPage}"   var="idx">
-           <h1>
-           <c:out value="${Paging.page == idx ? '':''}"/>
-           <a href="listPage?page=${idx}">${idx}</a>
            
-           </h1>   				
+           <c:out value="${Paging.page == idx ? '':''}"/>
+           <a  class="pagingNum" href="listPage?page=${idx}">${idx}</a>
+          			
 		</c:forEach>
 
 		<c:if test="${Paging.next && Paging.endPage > 0}">
-			<h1>
-			<a href="listPage?page=${Paging.endPage +1}">다음</a>
-			</h1>
+			<a class="page_btn btn_next" href="listPage?page=${Paging.endPage +1}">다음</a>
 		</c:if>
 
-	</ul>
-</div>
+</p>
 
 
 

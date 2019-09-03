@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 	@Inject
-	UserDAO dao;
+	private UserDAO dao;
 	
 	@Override
 	public UserVO login(UserVO dto) {
