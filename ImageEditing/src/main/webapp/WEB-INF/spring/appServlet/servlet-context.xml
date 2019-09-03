@@ -27,16 +27,15 @@
 	</beans:bean>
 
 
-    <!-- 이미지 업로드   -->  
+	<!-- 이미지 업로드 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 
-    <!-- 이미지 경로 설정  -->
+	<!-- 이미지 경로 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg
-			value="C:\ImgfileUpload">
+		<beans:constructor-arg value="C:\ImgfileUpload">
 
 		</beans:constructor-arg>
 	</beans:bean>
@@ -47,14 +46,18 @@
 		class="org.spring.img.interceptor.AuthenticationInterceptor">
 	</beans:bean>
 	<!-- Interceptor 설정 -->
-	<!-- <interceptors> 
-	<interceptor>
-	 <mapping path="/board/register"/> 
-	 <mapping path="/board/modify"/> 
-	 <mapping path="/board/delete"/> 
-	 <beans:ref bean="authenticationInterceptor"/> 
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/insertPage" />
+			<mapping path="/board/listPage" />
+			<mapping path="/board/read" />
+			<mapping path="/board/delete" />
+			<mapping path="/board/updatePage" />
+			<mapping path="/board/update" />
+			<mapping path="/board/insert" />
+			<beans:ref bean="authenticationInterceptor" />
 		</interceptor>
-		 </interceptors> -->
+	</interceptors>
 
 
 

@@ -65,5 +65,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+    <delete id="imgDelete">
+    delete from tbl_img where bno = #{bno}
+    
+    </delete>
+    
+    
+     <delete id="imgDeleteOne">
+       delete from tbl_img
+       where bno = #{bno}
+       and fileName = #{fileName}
+    </delete>
+
+
 
 </mapper>

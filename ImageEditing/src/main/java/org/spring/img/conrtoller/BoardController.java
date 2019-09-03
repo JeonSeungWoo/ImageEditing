@@ -58,8 +58,6 @@ public class BoardController {
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void readPage(Model model, @RequestParam("bno") int bno) throws Exception {
 		
-		logger.info("tsetSHow   ::   " + imgService.imgList(bno));
-		
 		model.addAttribute("list",imgService.imgList(bno)); 	
 		
 		model.addAttribute("vo", service.read(bno));
@@ -68,7 +66,9 @@ public class BoardController {
 
 	@RequestMapping(value = "/updatePage", method = RequestMethod.GET)
 	public void updatePage(Model model,Integer bno) throws Exception {
-	
+
+		
+		model.addAttribute("list",imgService.imgList(bno)); 
 		model.addAttribute("vo", service.read(bno));
 	}
 	

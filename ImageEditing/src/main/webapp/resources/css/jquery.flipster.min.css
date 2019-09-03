@@ -1,5 +1,6 @@
 /*! jQuery.Flipster, v1.0.1 (built 2015-11-02) */
 .flipster {
+	
 	display: block;
 	overflow-x: hidden;
 	overflow-y: visible;
@@ -11,6 +12,8 @@
 }
 
 .flipster__container, .flipster__item {
+
+    
 	margin: 0;
 	padding: 0;
 	list-style-type: none;

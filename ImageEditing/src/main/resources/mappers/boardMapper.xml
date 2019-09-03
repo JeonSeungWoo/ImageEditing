@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</if>
 		order by bno desc
-		limit #{page},10
+		limit #{page},#{pageSize}
 	</select>
 
 	<select id="listCount" resultType="java.lang.Integer">

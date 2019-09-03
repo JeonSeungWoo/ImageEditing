@@ -15,6 +15,7 @@ img{
    width: 100%;
    height: 100%;
 }
+
 </style>
 
 <meta charset="UTF-8">
@@ -22,7 +23,7 @@ img{
 </head>
 <body>
 
-<form action="read" id="form">
+<form action="read" id="form"  enctype="multipart/form-data">
 
 <input type="hidden" name="bno" value="${vo.bno}">
 <input type="hidden" name="page" value="${param.page}">
@@ -38,8 +39,13 @@ img{
         <ul>
         <c:forEach items="${list}" var="list">
         <li>
-         <img style="width: 50%; height: 50%;"  alt="image" src="/upload/showAll?bno=${vo.bno}&fileName=${list.fileName}">
+        
+         <img style="width: 300px; height: 300px;" alt="image" src="/upload/showAll?bno=${vo.bno}&fileName=${list.fileName}">
+      
+         <a href="/upload/imgDelete?bno=${vo.bno}&fileName=${list.fileName}" style="z-index:1;">X</a> 
+        
          </li>
+         
         </c:forEach>
         
         </ul>
@@ -64,7 +70,13 @@ img{
 </script>
 
 </article>
-
+	<ul>
+			<li id="fileForm"></li>
+			<li>
+				<button type="button" id="addBtn">이미지 추가</button>
+				<button type="button" id="insertBtn">이미지 등록</button>
+			</li>
+		</ul>
 
 
 <button type="button" id="upBtn">수정</button>
@@ -92,6 +104,24 @@ $(document).ready(function(){
 		obj.attr("action","listPage").attr("method","get").submit();
 	});
 	
+	
+	var addCheck = 0;
+	var addHtml = '';
+	
+
+	$("#addBtn").on("click", function() {
+
+		addCheck++;
+		
+		addHtml += '<input type="file" id="file" name="file">';
+		$("#fileForm").html(addHtml);
+	
+		
+	}); 
+	
+	$("#insertBtn").on("click", function() {
+		obj.attr("action","/upload/insertImage").attr("method","post").submit();
+	});
 	
 });
 

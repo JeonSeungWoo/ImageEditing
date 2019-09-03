@@ -2,6 +2,8 @@ package org.spring.img.domain;
 
 public class Criteria {
     private int page;
+    //page의 크기를 조절 한다.
+    private int pageSize =10;
 	private String keyword;
 	private String sType;
 	
@@ -31,10 +33,17 @@ public class Criteria {
 	}
 	
 	
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", keyword=" + keyword + ", sType=" + sType + "]";
+		return "Criteria [page=" + page + ", pageSize=" + pageSize + ", keyword=" + keyword + ", sType=" + sType + "]";
 	}
+	
 	
 	
 	

@@ -20,53 +20,46 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
-	
-	
+
 	@Inject
 	private BoardDAO dao;
-	
+
 	@Inject
-    private ImgDAO idao;
-	
-	
+	private ImgDAO idao;
+
 	@Transactional
 	@Override
-	public void create(BoardVO vo,List<MultipartFile> file) throws Exception {
-		//이미지를 추가.
-		
+	public void create(BoardVO vo, List<MultipartFile> file) throws Exception {
+		// 이미지를 추가.
+
 		dao.create(vo);
-		
-		
-		
+
 		for (int i = 0; i < file.size(); i++) {
 			System.out.println(file.get(i).getOriginalFilename());
-			//file 이름 만들기.
+			// file 이름 만들기.
 			UUID uid = UUID.randomUUID();
-			
-			String fileName =  file.get(i).getOriginalFilename();
+
+			String fileName = file.get(i).getOriginalFilename();
 			String uploadName = uid + "_" + fileName;
-			
+
 			String datePath = UploadFileUtils.calcPath("C:\\TEMP\\");
-			
+
 			System.out.println("test !@# : " + datePath);
-			
+
 			FileOutputStream fos = new FileOutputStream("C:\\TEMP\\" + datePath + File.separator + uploadName);
-			
+
 			IOUtils.copy(file.get(i).getInputStream(), fos);
-			
+
 			ImgVO ivo = new ImgVO();
 			ivo.setFileName(uploadName);
 			ivo.setLocation("C:\\TEMP\\" + datePath + File.separator);
-			
-			System.out.println(" name  : " + ivo.getFileName()  +"  lo   : " + ivo.getLocation());
-			
+
+			System.out.println(" name  : " + ivo.getFileName() + "  lo   : " + ivo.getLocation());
+
 			idao.create(ivo);
 			fos.close();
 		}
-		
-		
-		
+
 	}
 
 	@Override
@@ -81,16 +74,41 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	@Transactional
 	@Override
 	public void delete(int bno) throws Exception {
+		List<ImgVO> list = idao.imgList(bno);
+		System.out.println("imgList  ::  " + idao.imgList(bno));
+        String location = "";
+		String fileName = "";
+		
+		//for문 스타트
+		for (int i = 0; i < list.size(); i++) {
+		location = list.get(i).getLocation();
+		fileName = list.get(i).getFileName();
+		File file = new File(location + fileName);	
+		
+		
+		if(file.exists()) {
+			if(file.delete()) {
+				System.out.println("파일삭제 성공");
+			}else {
+				System.out.println("파이삭제 실패");
+				
+			}
+		}else {
+			System.err.println("파일이 존재하지 아늡니다.");
+		}
+		
+		}
+		idao.imgDelete(bno);
 		dao.delete(bno);
 
 	}
 
 	@Override
 	public List<BoardVO> list(Criteria cri) throws Exception {
-		
-		
+
 		return dao.list(cri);
 	}
 

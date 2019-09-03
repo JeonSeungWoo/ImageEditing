@@ -32,5 +32,17 @@ public class ImgServiceImpl implements ImgService{
 		return dao.imgReadAll(bno, fileName);
 	}
 
+	@Override
+	public void imgDeleteOne(int bno, String fileName) throws Exception {
+	      dao.imgDeleteOne(bno, fileName);
+		
+	}
+
+	@Override
+	public void create(ImgVO vo) throws Exception {
+		dao.create(vo);
+		
+	}
+
 	
 }

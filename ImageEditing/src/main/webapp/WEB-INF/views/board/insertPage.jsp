@@ -142,7 +142,7 @@ h1 {
 <body>
 
 
-	<form action="insert.do" id="form" enctype="multipart/form-data">
+	<form action="insert" id="form" enctype="multipart/form-data">
 		<table border="1" align="centert" cellpadding="3" cellspacing="8">
 			<tr>
 				<td>제목</td>
@@ -185,7 +185,7 @@ h1 {
 
 	$("#insertBtn").on("click", function() {
 
-		form.attr("action", "insert.do");
+		form.attr("action", "insert");
 		form.attr("method", "POST");
 		form.submit();
 	});
@@ -197,7 +197,6 @@ h1 {
 	$("#addBtn").on("click", function() {
 
 		addCheck++;
-		alert(addCheck);
 		
 		addHtml += '<input type="file" id="file" name="file">';
 		$("#fileForm").html(addHtml);

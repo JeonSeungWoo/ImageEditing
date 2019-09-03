@@ -142,6 +142,14 @@
 			</select>
              <input type="text" name="keyword" id="keyword" value="${param.keyword}">
              <button id="sBtn">검색 </button>
+             
+             <select id="pageSelect" name="pageSize">
+                 <option value="10" ${param.pageSize == "10" ? "selected" : ""}>10</option>
+                 <option value="20" ${param.pageSize == "20" ? "selected" : ""}>20</option>
+                 <option value="30" ${param.pageSize == "30" ? "selected" : ""}>30</option>
+                 <option value="50" ${param.pageSize == "50" ? "selected" : ""}>50</option>
+                 <option value="100" ${param.pageSize == "100" ? "selected" : ""}>100</option>
+             </select>
 		</form>
 
 </div>
@@ -201,6 +209,14 @@
 		$("#pageHidden").val(1);
 		$("#form").submit();
 	});
+	
+	var form = $("#form");
+	
+	$("#pageSelect").change(function(){
+		form.attr("action","listPage").attr("method","get").submit();
+	})
+	
+
 	
 });
 

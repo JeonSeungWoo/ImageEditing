@@ -47,4 +47,19 @@ public class ImgDAOImpl implements ImgDAO{
 		return session.selectOne(name + "imgReadAll" ,map);
 	}
 
+	@Override
+	public void imgDelete(int bno) throws Exception {
+		session.delete(name + "imgDelete" ,bno);
+		
+	}
+
+	@Override
+	public void imgDeleteOne(int bno, String fileName) throws Exception {
+		HashMap<String, String> map = new HashMap<String, String>();		
+		map.put("bno", Integer.toString(bno));
+		map.put("fileName", fileName);
+		session.delete(name + "imgDeleteOne",map); 
+		
+	}
+
 }
