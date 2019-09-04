@@ -62,4 +62,9 @@ public class ImgDAOImpl implements ImgDAO{
 		
 	}
 
+	@Override
+	public void imgInsertOne(ImgVO vo) throws Exception {
+		session.insert(name + "imgInsertOne",vo);		
+	}
+
 }

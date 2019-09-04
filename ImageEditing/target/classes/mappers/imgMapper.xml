@@ -26,6 +26,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 
+	<insert id="imgInsertOne" parameterType="ImgVO">
+
+		insert into
+		tbl_img(bno,location,fileName) value(
+		 #{bno}
+		,#{location}
+		,#{fileName})
+
+	</insert>
+
+
 
 	<select id="imgReadPage" resultType="ImgVO">
 		select

@@ -3,12 +3,14 @@ package org.spring.img.conrtoller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.img.domain.BoardVO;
 import org.spring.img.domain.Criteria;
 import org.spring.img.domain.Paging;
+import org.spring.img.domain.UserVO;
 import org.spring.img.service.BoardService;
 import org.spring.img.service.ImgService;
 import org.springframework.stereotype.Controller;
@@ -33,9 +35,10 @@ public class BoardController {
 	
 
 	@RequestMapping(value = "/insertPage", method = RequestMethod.GET)
-	public void insertPage(Model model) throws Exception {
-		logger.info("test!!!!!!!!!!!!!");
+	public void insertPage(Model model,UserVO vo,HttpSession session) throws Exception {
+		logger.info("test!!!!!!!!!!!!! : "  + session.getAttribute("userId"));
 		
+
 
 	}
     

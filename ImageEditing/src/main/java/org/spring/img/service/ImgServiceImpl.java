@@ -39,10 +39,13 @@ public class ImgServiceImpl implements ImgService{
 	}
 
 	@Override
-	public void create(ImgVO vo) throws Exception {
-		dao.create(vo);
+	public void imgInsertOne(ImgVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.imgInsertOne(vo);
 		
 	}
+
+
 
 	
 }

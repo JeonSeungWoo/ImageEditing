@@ -4,8 +4,8 @@ public class ImgVO {
 
 	private int ino;
 	private int bno;
-	private String location = "";
-	private String fileName = "";
+	private String location;
+	private String fileName;
 	
 	
 	public int getIno() {

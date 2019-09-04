@@ -150,7 +150,10 @@
                  <option value="50" ${param.pageSize == "50" ? "selected" : ""}>50</option>
                  <option value="100" ${param.pageSize == "100" ? "selected" : ""}>100</option>
              </select>
+             
+             <button id="inPageBtn">이미지 등록하기</button>
 		</form>
+		
 
 </div>
 <!--검색 End  -->
@@ -160,19 +163,19 @@
 
  <div class="gallery">
  <c:forEach items="${list}" var="list">
- 
+  <a href="/board/read?page=${param.page}&bno=${list.bno}">
     <div class="gallery-item">
       <div class="gallery-item-image">
-        <a href="/board/read?bno=${list.bno}">
+       
         <img id="img" alt="image" src="/upload/show?bno=${list.bno}">
-        </a>
+       
         </div>
       <div class="gallery-item-description">
         <h3>${list.title}</h3>
         <span>${list.content}</span>
         </div>
     </div>
- 
+  </a>
   </c:forEach>
 </div>
 </div>
@@ -216,6 +219,10 @@
 		form.attr("action","listPage").attr("method","get").submit();
 	})
 	
+	
+	$("#inPageBtn").on("click",function(){
+		form.attr("action","insertPage").attr("method","get").submit();
+	});
 
 	
 });

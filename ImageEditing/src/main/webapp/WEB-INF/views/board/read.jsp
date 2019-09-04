@@ -81,7 +81,7 @@ img{
 
 <button type="button" id="upBtn">수정</button>
 <button type="button" id="delBtn">삭제</button>
-<button type="button" id="listBtn">목록</button>
+<button type="button" id="listBtn">확인</button>
 
 
 </form>
@@ -101,7 +101,8 @@ $(document).ready(function(){
 	});
 	
 	$("#listBtn").on("click",function(){
-		obj.attr("action","listPage").attr("method","get").submit();
+		obj.attr("action","/board/listPage?page=1").attr("method","get").submit();
+	
 	});
 	
 	
@@ -118,6 +119,8 @@ $(document).ready(function(){
 	
 		
 	}); 
+	
+	
 	
 	$("#insertBtn").on("click", function() {
 		obj.attr("action","/upload/insertImage").attr("method","post").submit();

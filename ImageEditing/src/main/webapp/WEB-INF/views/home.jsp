@@ -3,7 +3,7 @@
 <html lang="kr">
 	<head>
 	<meta charset="UTF-8">
-	<title>http://www.blueb.co.kr</title>
+	<title>imgHome</title>
 <link rel='stylesheet prefetch' href='/css/font-awesome.min.css'> 
 
 <style rel="stylesheet">
