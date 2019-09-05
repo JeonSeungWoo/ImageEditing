@@ -7,6 +7,17 @@ public class Criteria {
 	private String keyword;
 	private String sType;
 	
+	//userId를가지고 List를 불러줄때 사용하기 위한 객체
+	private String userId;
+	
+	//userId get,set
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	
 	public int getPage() {
 		return page;
@@ -39,13 +50,15 @@ public class Criteria {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", pageSize=" + pageSize + ", keyword=" + keyword + ", sType=" + sType + "]";
+		return "Criteria [page=" + page + ", pageSize=" + pageSize + ", keyword=" + keyword + ", sType=" + sType
+				+ ", userId=" + userId + "]";
 	}
-	
-	
-	
+
 	
 	
 }

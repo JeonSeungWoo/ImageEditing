@@ -53,4 +53,16 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectOne(name + "listCount");
 	}
 
+	@Override
+	public List<BoardVO> userlist(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(name + "userlist", cri);
+	}
+
+	@Override
+	public int userlistCount() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(name + "userlistCount");
+	}
+
 }

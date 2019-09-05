@@ -130,4 +130,16 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listCount();
 	}
 
+	@Override
+	public List<BoardVO> userlist(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userlist(cri);
+	}
+
+	@Override
+	public int userlistCount() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userlistCount();
+	}
+
 }

@@ -3,7 +3,7 @@ package org.spring.img.domain;
 public class UserVO {
 private String userId;
 private String userPw;
-private String userNm;
+private String userName;
 private int userPoint;
 private boolean useCookie;
 public String getUserId() {
@@ -18,11 +18,12 @@ public String getUserPw() {
 public void setUserPw(String userPw) {
 	this.userPw = userPw;
 }
-public String getUserNm() {
-	return userNm;
+
+public String getUserName() {
+	return userName;
 }
-public void setUserNm(String userNm) {
-	this.userNm = userNm;
+public void setUserName(String userName) {
+	this.userName = userName;
 }
 public int getUserPoint() {
 	return userPoint;
@@ -38,10 +39,12 @@ public void setUseCookie(boolean useCookie) {
 }
 @Override
 public String toString() {
-	return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userNm=" + userNm + ", userPoint=" + userPoint
+	return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userPoint=" + userPoint
 			+ ", useCookie=" + useCookie + "]";
 }
- 
+
+
+
 
 
 

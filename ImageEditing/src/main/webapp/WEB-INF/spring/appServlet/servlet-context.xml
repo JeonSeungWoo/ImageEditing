@@ -46,8 +46,9 @@
 		class="org.spring.img.interceptor.AuthenticationInterceptor">
 	</beans:bean>
 	<!-- Interceptor 설정 -->
-<!-- 	<interceptors>
+ 	<interceptors>
 		<interceptor>
+		<!--  
 			<mapping path="/board/insertPage" />
 			<mapping path="/board/listPage" />
 			<mapping path="/board/read" />
@@ -55,10 +56,13 @@
 			<mapping path="/board/updatePage" />
 			<mapping path="/board/update" />
 			<mapping path="/board/insert" />
+		-->
+		    <mapping path="/user/userInfo" />
+			<mapping path="/board/userListPage" />
 			<beans:ref bean="authenticationInterceptor" />
 		</interceptor>
 	</interceptors>
- -->
+
 
 
 	<context:component-scan

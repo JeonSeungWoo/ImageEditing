@@ -75,6 +75,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</if>
 	</select>
+	
+	
+	<select id="userlist" parameterType="Criteria" resultType="BoardVO">
+		select
+		bno,
+		title,
+		content,
+		userid,
+		insert_date
+		from tbl_board
+		where bno > 0
+		and userid = #{userId}
+		<if test="sType != null">
+			<if test="sType eq 'title'.toString()">
+				and title like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'content'.toString()">
+				and content like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'userid'.toString()">
+				and userid like CONCAT('%', #{keyword},'%') 
+			</if>
+		</if>
+		order by bno desc
+		limit #{page},#{pageSize}
+	</select>
+
+	<select id="userlistCount" resultType="java.lang.Integer">
+		select count(1) from tbl_board
+		where bno > 0
+		and userid = #{userId}
+			<if test="sType != null">
+			<if test="sType eq 'title'.toString()">
+				and title like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'content'.toString()">
+				and content like CONCAT('%', #{keyword},'%') 
+			</if>
+			<if test="sType eq 'userid'.toString()">
+				and userid like CONCAT('%', #{keyword},'%') 
+			</if>
+		</if>
+	</select>
+	
+	
+	
+	
+	
 
 
 </mapper>

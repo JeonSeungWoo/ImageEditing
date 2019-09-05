@@ -22,7 +22,10 @@ img{
 <title>Insert title here</title>
 </head>
 <body>
-
+ <div id="model">
+            
+            
+</div>
 <form action="read" id="form"  enctype="multipart/form-data">
 
 <input type="hidden" name="bno" value="${vo.bno}">
@@ -36,16 +39,12 @@ img{
         <h2>${vo.title}</h2>
         <!--ui 밑에 개당 이름 지어줄수 있다.  -->
         <!--<ul class="flip-items"> -->
-        <ul>
+        <ul class="ul">
         <c:forEach items="${list}" var="list">
-        <li>
-        
-         <img style="width: 300px; height: 300px;" alt="image" src="/upload/showAll?bno=${vo.bno}&fileName=${list.fileName}">
-      
+         <li class= "imgLi" data-value ="${list.fileName}"  onclick="test( ${list.ino})">
+         <img class="img"  style="width: 300px; height: 300px;" alt="${list.fileName}" src="/upload/showAll?bno=${vo.bno}&fileName=${list.fileName}">
          <a href="/upload/imgDelete?bno=${vo.bno}&fileName=${list.fileName}" style="z-index:1;">X</a> 
-        
          </li>
-         
         </c:forEach>
         
         </ul>
@@ -61,6 +60,26 @@ img{
         nav: true,
         buttons:   true,
     }); */
+	function test(a){
+		
+		alert(JSON.stringify(a));
+		$.ajax({
+            type : "GET", //전송방식을 지정한다 (POST,GET)
+            url : "InputData.jsp?type=2",//호출 URL을 설정한다. GET방식일경우 뒤에 파라티터를 붙여서 사용해도된다.
+            dataType : "text",//호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을 사용할 수 있다.
+            error : function(){
+                alert("통신실패!!!!");
+            },
+            success : function(Parse_data){
+                $("#model").html(Parse_data); //div에 받아온 값을 넣는다.
+                alert("통신 데이터 값 : " + Parse_data);
+            }
+             
+        });
+    });
+
+
+	};
     
     var carousel = $("#carousel").flipster({
 	    style: 'carousel',
@@ -125,6 +144,18 @@ $(document).ready(function(){
 	$("#insertBtn").on("click", function() {
 		obj.attr("action","/upload/insertImage").attr("method","post").submit();
 	});
+	
+	
+/*  	$(".imgLi").on("click",function(event){
+        var a = $(".imgLi").attr("data-value");
+        
+		alert(a);
+	}); */
+
+	
+
+	
+
 	
 });
 

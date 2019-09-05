@@ -18,6 +18,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
      <select id="checkId" resultType="java.lang.Integer">
      select count(1) from tbl_user where userId = #{userId}
+     </select>
+     
+     <select id="userImpormation" resultType="UserVO">
+     select * from tbl_user
+     where userid = #{userId}
      
      </select>
+     
+     <update id="userUpdate" parameterType="UserVO">
+     update tbl_user
+       set userPw = #{userPw},
+           userName = #{userName}
+     where userId = #{userId}
+     
+     </update>
+     
+     
+     
+    
 </mapper>

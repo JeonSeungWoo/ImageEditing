@@ -15,4 +15,6 @@ public interface BoardService {
 	public void delete(int bno)throws Exception;
 	public List<BoardVO> list(Criteria cri)throws Exception;
 	public int listCount()throws Exception;
+	public List<BoardVO> userlist(Criteria cri)throws Exception;
+	public int userlistCount()throws Exception;
 }

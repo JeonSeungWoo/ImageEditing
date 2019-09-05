@@ -131,6 +131,8 @@
 
 <body>
 <!--검색 STA  -->
+	<section class="hero">
+		<%@ include file="/resources/include/header.jsp"%>
 <div align="center">
 		<form action="listPage" method="get" id="form">
 			<input id="pageHidden" type="hidden" name="page" value="${param.page}"> 
@@ -202,7 +204,7 @@
 </p>
 
 
-
+</section>
 </body>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
@@ -217,7 +219,7 @@
 	
 	$("#pageSelect").change(function(){
 		form.attr("action","listPage").attr("method","get").submit();
-	})
+	});
 	
 	
 	$("#inPageBtn").on("click",function(){

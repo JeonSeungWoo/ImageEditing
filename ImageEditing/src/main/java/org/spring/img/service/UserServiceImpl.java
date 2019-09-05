@@ -31,4 +31,16 @@ public class UserServiceImpl implements UserService {
 		return dao.checkId(vo);
 	}
 
+	@Override
+	public UserVO userInfo(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userInfo(userId);
+	}
+
+	@Override
+	public void userUpdate(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.userUpdate(vo);
+	}
+
 }

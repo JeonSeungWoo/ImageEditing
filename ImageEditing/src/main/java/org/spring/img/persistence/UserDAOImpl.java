@@ -34,6 +34,20 @@ public class UserDAOImpl implements UserDAO{
 		return session.selectOne("org.spring.img.mappers.userMapper.checkId",vo);
 	}
 
+
+	@Override
+	public UserVO userInfo(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne("org.spring.img.mappers.userMapper.userImpormation",userId);
+	}
+
+
+	@Override
+	public void userUpdate(UserVO vo) throws Exception {
+	     session.update("org.spring.img.mappers.userMapper.userUpdate",vo);
+		
+	}
+
 	
 	
 	
