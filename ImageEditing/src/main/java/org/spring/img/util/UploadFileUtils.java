@@ -2,21 +2,48 @@ package org.spring.img.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spring.img.domain.ImgVO;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 public class UploadFileUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
+	     
+	      public static @ResponseBody byte[] show(ImgVO vo)throws Exception{
+	    	    
+				InputStream in;
+				String location = "";
+				String fileName = "";
+				String noImg = "C:\\TEMP\\noImage.png";
+				if (vo != null) {
+					location =vo.getLocation();
+					fileName = vo.getFileName();
+					in = new FileInputStream(location + fileName);
+				} else {
+					in = new FileInputStream(noImg);
+
+				}
+				byte[] result = IOUtils.toByteArray(in);
+				in.close();
+				return result;
+	      }
 	
+	
+	     
 	
 		  public static String uploadFile(String uploadPath,
 		                              String originalName,

@@ -32,16 +32,17 @@ img{
 <input type="hidden" name="page" value="${param.page}">
 
 
-
 <article id="demo-carousel" class="demo">
 
     <div id="carousel">
         <h2>${vo.title}</h2>
         <!--ui 밑에 개당 이름 지어줄수 있다.  -->
         <!--<ul class="flip-items"> -->
-        <ul class="ul">
+        
+        <ul>
         <c:forEach items="${list}" var="list">
-         <li class= "imgLi" data-value ="${list.fileName}"  onclick="test( ${list.ino})">
+        <input type="hidden" name="ino" value="${list.ino}">
+         <li class= "imgLi" data-value ="${list.fileName}"  onclick="editMove(${list.ino})">
          <img class="img"  style="width: 300px; height: 300px;" alt="${list.fileName}" src="/upload/showAll?bno=${vo.bno}&fileName=${list.fileName}">
          <a href="/upload/imgDelete?bno=${vo.bno}&fileName=${list.fileName}" style="z-index:1;">X</a> 
          </li>
@@ -60,27 +61,6 @@ img{
         nav: true,
         buttons:   true,
     }); */
-	function test(a){
-		
-		alert(JSON.stringify(a));
-		$.ajax({
-            type : "GET", //전송방식을 지정한다 (POST,GET)
-            url : "InputData.jsp?type=2",//호출 URL을 설정한다. GET방식일경우 뒤에 파라티터를 붙여서 사용해도된다.
-            dataType : "text",//호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을 사용할 수 있다.
-            error : function(){
-                alert("통신실패!!!!");
-            },
-            success : function(Parse_data){
-                $("#model").html(Parse_data); //div에 받아온 값을 넣는다.
-                alert("통신 데이터 값 : " + Parse_data);
-            }
-             
-        });
-    });
-
-
-	};
-    
     var carousel = $("#carousel").flipster({
 	    style: 'carousel',
 	    spacing: -0.5,
@@ -109,8 +89,18 @@ img{
 
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
+
+var obj =$("#form");
+
+function editMove(a){
+	
+	alert(JSON.stringify(a)); 
+	window.location == "/edt/edtUi?ino="+a;
+};
+
+
 $(document).ready(function(){
-	var obj =$("#form");
+	
 	$("#upBtn").on("click",function(){
 		obj.attr("action","updatePage").attr("method","get").submit();
 	});
@@ -146,17 +136,16 @@ $(document).ready(function(){
 	});
 	
 	
+	
+ 
+
+	
 /*  	$(".imgLi").on("click",function(event){
         var a = $(".imgLi").attr("data-value");
         
 		alert(a);
 	}); */
 
-	
-
-	
-
-	
 });
 
 
