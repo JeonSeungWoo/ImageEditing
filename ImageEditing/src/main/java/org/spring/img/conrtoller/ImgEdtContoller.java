@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/edt/*")
 @Controller
-public class imgEdtContoller {
+public class ImgEdtContoller {
 
-	private static final Logger logger = LoggerFactory.getLogger(imgEdtContoller.class);
+	private static final Logger logger = LoggerFactory.getLogger(ImgEdtContoller.class);
 
 
 	@Inject
@@ -41,6 +41,15 @@ public class imgEdtContoller {
 	}
 
 	
+	
+	@RequestMapping(value = "/edtUi2", method = RequestMethod.GET)
+	public void edtUi2(Model model, UserVO vo, HttpSession session,@RequestParam("ino") int ino) throws Exception {
+		
+		System.out.println(service.edtUI(ino));
+		
+		model.addAttribute("img",service.edtUI(ino));
+	}
+
 	
 	
 	

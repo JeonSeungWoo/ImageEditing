@@ -83,12 +83,15 @@ f.prototype._initCanvas = function(div, width, height)
 	this.zoomX = width * 0.5;
 	this.zoomY = height * 0.5;
 	
+	
 	//init destination canvas (for display)
 	this.destCanvas = document.createElement("canvas");
 	this.destCanvasCtx = this.destCanvas.getContext("2d");
 	this.destCanvas.width = width;
 	this.destCanvas.height = height;
 	this.container.appendChild(this.destCanvas);
+	
+
 	
 	//init canvas (actual data)
 	this.canvas.width = width;
@@ -104,7 +107,7 @@ f.prototype._initCanvas = function(div, width, height)
 	this.tempCanvasCtx = this.tempCanvas.getContext("2d");
 	this.tempCanvas.style.position = "absolute";
 	this.tempCanvas.enabled = false;
-	
+
 	
 	var ref = this;	//reference for closure
 	this.destCanvas.onmousedown = function(e){ ref._mouseDownHandler(e)};

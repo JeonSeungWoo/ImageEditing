@@ -308,7 +308,6 @@
   
   $(document).ready(function(){
 	  var ino = $("#ino").val();
-	  alert(ino);
 	  
   });
   
@@ -334,6 +333,7 @@
    img = new Image();
    
    img.src = "/edt//edtShow?ino=" +$("#ino").val();
+   
    img.onload = function(e) {
  	  cvs.drawImage(img, 50, 50);
  	bufCtx.drawImage(img, 50, 50);

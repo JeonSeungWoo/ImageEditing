@@ -75,6 +75,12 @@ img{
 				<button type="button" id="addBtn">이미지 추가</button>
 				<button type="button" id="insertBtn">이미지 등록</button>
 			</li>
+			
+			<li>
+			<h5>이미지 모듈 선택</h5>
+			<input type="radio" name="imageCk" class="imageCk" value="0" checked="checked">
+            <input type="radio" name="imageCk" class="imageCk" value="1" >
+			</li>
 		</ul>
 
 
@@ -93,9 +99,21 @@ img{
 var obj =$("#form");
 
 function editMove(a){
+	var imgeCk = $('input[name=imageCk]:checked').val();
+
 	
-	alert(JSON.stringify(a)); 
-	window.location == "/edt/edtUi?ino="+a;
+	if (imgeCk == 0) {
+		 location.href = "/edt/edtUi?ino="+a; 
+	}else if(imgeCk == 1 ){
+		 location.href = "/edt/edtUi2?ino="+a; 
+	}
+	
+	
+/* 	
+  
+ */
+	
+	
 };
 
 
